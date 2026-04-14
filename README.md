@@ -1,8 +1,8 @@
 # proxmox-monitor
 
-> Monitor de infraestructura para Proxmox VE con alertas en tiempo real vía Telegram.
+> Herramienta personal de monitoreo de infraestructura para Proxmox VE con alertas en tiempo real vía Telegram.
 
-Herramienta escrita en Go que consulta la API de Proxmox periódicamente, guarda el historial de estados en SQLite y envía alertas a Telegram cuando un nodo, VM o contenedor LXC cambia de estado.
+Desarrollada para uso en homelab y entornos de trabajo. Consulta la API de Proxmox periódicamente, guarda el historial de estados en SQLite y envía alertas a Telegram cuando un nodo, VM o contenedor LXC cambia de estado.
 
 ---
 
@@ -24,7 +24,6 @@ Herramienta escrita en Go que consulta la API de Proxmox periódicamente, guarda
 | SQLite (`modernc.org/sqlite`) | Historial de estados (sin dependencias externas) |
 | Proxmox API REST | Fuente de datos |
 | Telegram Bot API | Canal de alertas |
-| `node-cron` | Chequeos periódicos |
 
 ---
 
@@ -118,4 +117,10 @@ Tiempo caído: 5 minutos
 
 ## Autor
 
-Construido por [@oriversegura](https://github.com/oriversegura) como herramienta de uso interno para monitoreo de infraestructura.
+Creado por [Oriver Segura Vargas](https://github.com/oriversegura). Libre para usar, modificar y compartir bajo licencia MIT.
+
+---
+
+## Licencia
+
+[MIT](./LICENSE) © 2026 Oriver Segura Vargas
