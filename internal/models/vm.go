@@ -1,15 +1,15 @@
 package models
 
-type kind string
+type Kind string
 
 const (
-	KindVm  kind = "Virtual Machine"
-	KindLXC kind = "Container LXC"
+	KindVm  Kind = "Virtual Machine"
+	KindLXC Kind = "Container LXC"
 )
 
 type Vm struct {
 	Base
 	ID        string
-	Kind      kind
+	Kind      Kind
 
 }
