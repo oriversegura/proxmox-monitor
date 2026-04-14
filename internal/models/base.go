@@ -2,17 +2,16 @@ package models
 
 import "time"
 
-type status string
+type Status string
 
 const (
-	StatusOnline  status = "Online"
-	StatusOffline status = "Offline"
+	StatusOnline  Status = "Online"
+	StatusOffline Status = "Offline"
 )
-
 
 type Base struct {
 	Name      string
 	IP        string
 	Timestamp time.Time
-	Status status
+	Status    Status
 }
