@@ -9,14 +9,16 @@ import (
 )
 
 type vmsResponse struct {
-	Data []vmsResponse `json:"data"`
+	Data []vmsModel `json:"data"`
 }
 
 type vmsModel struct {
-	Name      string `json:"node"`
+	Name      string `json:"name"`
 	Status    string `json:"status"`
 	IP        string `json:"ip"`
 	Timestamp int64  `json:"uptime"`
+	ID        string `json:"vm_id"`
+	Kind      string `json:"type"`
 }
 
 func GetVMS(client *http.Client, url string, apiToken string) (nodes []models.Vm, error error) {
@@ -35,29 +37,30 @@ func GetVMS(client *http.Client, url string, apiToken string) (nodes []models.Vm
 
 	defer res.Body.Close()
 
-	var result nodesResponse
+	var result vmsResponse
 	err = json.NewDecoder(res.Body).Decode(&result)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	for _, nodesModel := range result.Data {
+	for _, vmsModel := range result.Data {
 
 		var status models.Status
 
-		if nodesModel.Status == "online" {
+		if vmsModel.Status == "running" {
 			status = models.StatusOnline
 		} else {
 			status = models.StatusOffline
 		}
 
 		vms := models.Vm{
-			Hostname: vmsModel.Name,
 			Base: models.Base{
 				Name:   vmsModel.Name,
 				IP:     vmsModel.IP,
 				Status: status,
 			},
+			ID:   vmsModel.ID,
+			Kind: models.Kind(vmsModel.Kind),
 		}
 		nodes = append(nodes, vms)
 	}
