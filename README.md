@@ -108,8 +108,8 @@ Tiempo caído: 5 minutos
 - [x] Conexión a SQLite
 - [x] Cliente HTTP Proxmox
 - [x] Consulta de nodos
-- [ ] Consulta de VMs y LXC
-- [ ] Alertas Telegram
+- [x] Consulta de VMs y LXC
+- [x] Alertas Telegram
 - [ ] Scheduler
 - [ ] Main.go
 
